@@ -1,0 +1,1 @@
+This is a application created as a server to serve the platform where it helps in creating a marketers campaign brief by using previous data and leveraging Langchain and Langgraph.
