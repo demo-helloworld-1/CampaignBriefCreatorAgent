@@ -6,8 +6,8 @@ import sys
 sys.path.append('../')
 
 import traceback
-from src import config # Import config for checking vector store path if needed
-from src import rag # Import config for checking vector store path if needed
+import config # Import config for checking vector store path if needed
+import rag # Import config for checking vector store path if needed
 class RetrieveDataInput(BaseModel):
     """Input schema for the retrieve_relevant_campaign_data tool."""
     query: str = Field(description="The specific query or topic to search for relevant information in indexed past campaign data or metadata.")
