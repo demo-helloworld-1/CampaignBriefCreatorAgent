@@ -1,0 +1,4 @@
+Brand: Nike
+Type: Company Logo
+Description: Nike swoosh logo, sports apparel brand. Use for Nike campaigns.
+ImagePath: ./logos/Nike.png

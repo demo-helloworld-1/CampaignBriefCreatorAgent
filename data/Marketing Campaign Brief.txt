@@ -1,0 +1,70 @@
+Marketing Campaign Brief
+
+Campaign Name: New Product Launch - "EcoSmart Thermos"
+Campaign Type: Social Media & Email Campaign
+
+Business & Marketing Objectives:
+1. Generate awareness and interest in the new "EcoSmart Thermos."
+2. Drive traffic to the product landing page.
+3. Achieve 15% conversion rate from email clicks.
+4. Increase social media engagement by 25% compared to previous campaigns.
+
+Target Audience:
+1. Primary: Environmentally conscious professionals, aged 25-40, urban dwellers.
+2. Secondary: University students, aged 18-24, active on Instagram and TikTok.
+
+Channels:
+1. Social Media: Instagram, Facebook, Linkedln, TikTok
+2. Email: Targeted segmented email blasts
+
+Campaign Duration:
+1. Launch Date: April 5, 2025
+2. End Date: April 30, 2025
+
+Budget Allocation:
+1. Social Media: $5,000
+2. Email Marketing: $3,000
+3. Creative Production: $2,000
+
+Core Message & Positioning: "Stay Sustainably Hydrated - Introducing the EcoSmart
+Thermos: Your daily companion to reduce plastic waste while maintaining the perfect drink
+temperature."
+
+Creative Assets Required:
+1. Short-form videos for Instagram and TikTok highlighting product usage
+2. High-resolution product photography for Facebook and Linkedln
+3. Email templates and banners
+4. Infographics showcasing environmental benefits
+
+Compliance, Legal & Brand Guidelines:
+1. All assets must adhere to corporate brand guidelines (colors, logos, typography).
+2. GDPR compliance for email marketing.
+3. Legal team approval required before launch.
+
+Technical & Operational Requirements:
+1. Social Media scheduling via Hootsuite
+2. Email platform: Salesforce Marketing Cloud
+3. UTM parameters for tracking analytics
+4. Landing page optimized for mobile
+
+Measurement & Reporting:
+1. KPIs: CTR, engagement rate, email open rate, landing page visits, conversion rates
+2. Reporting cadence: Weekly progress reports; final campaign performance report by
+May 10, 2025
+3. Analytics tools: Google Analytics, platform-specific insights
+
+Historical Insights:
+1. Past product launches averaged a 12% email conversion rate and 20% engagement
+uplift on social channels
+2. Short-form video content historically yields highest engagement rates
+
+Roles & Responsibilities:
+1. Campaign Manager: Oversees end-to-end execution
+2. Creative Team: Video and graphic content production
+3. Social Media Specialist: Posting, scheduling, monitoring
+4. Email Marketing Specialist: Audience segmentation, deployment
+5. Analyst: Weekly performance monitoring and reporting
+
+
+
+

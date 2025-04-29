@@ -1,0 +1,4 @@
+Brand: LTIMindtree
+Type Company: Logo
+Description: A logo of LTIMindtree Company
+ImagePath: .logos/LTIMindtree.png

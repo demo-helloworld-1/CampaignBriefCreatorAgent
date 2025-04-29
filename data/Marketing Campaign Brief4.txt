@@ -1,0 +1,61 @@
+Marketing Campaign Brief 
+Campaign Name: "EcoSmart Giveback - Celebrate World Environment Day" 
+Campaign Type: Social Media, Email Campaign, & Promotional Sale
+
+Business & Marketing Objectives:
+Promote the EcoSmart product line through an eco-conscious World Environment Day campaign.
+Drive sales by offering limited-time discounts and bundle offers.
+Engage the community in raising awareness about environmental sustainability.
+Increase social media mentions using a branded hashtag by 30%.
+
+Target Audience:
+Primary: Eco-conscious families and professionals, aged 25-50, who align with sustainable values.
+Secondary: Students and young adults active on Instagram, Facebook, and Pinterest.
+
+Channels:
+Social Media: Instagram, Facebook, Pinterest, TikTok.
+Email Campaigns: Personalized offers and newsletters.
+E-commerce Website: Dedicated World Environment Day campaign banner and landing page.
+
+Campaign Duration:
+Launch Date: June 1, 2025
+End Date: June 7, 2025
+
+Budget Allocation:
+Social Media: $6,000
+Email Marketing: $3,500
+Creative Production: $2,500
+
+Core Message & Positioning: "Give Back to the Planet – Celebrate World Environment Day with EcoSmart: For every product you purchase, we’ll donate 10% to reforestation efforts."
+
+Creative Assets Required:
+Impactful short-form videos showing how EcoSmart contributes to sustainability.
+Shareable infographics about reforestation efforts and the environmental impact of EcoSmart products.
+Email templates with discount codes, product bundles, and donation details.
+A landing page that highlights the World Environment Day offer and donation tracker.
+
+Compliance, Legal & Brand Guidelines:
+All promotional content to adhere to EcoSmart brand guidelines.
+Ensure transparency in donation commitment and compliance with charity-related regulations.
+Legal approval required for all public communications.
+
+Technical & Operational Requirements:
+Use Hootsuite for social media scheduling and monitoring branded hashtag engagement.
+Email deployment via Salesforce Marketing Cloud.
+Website updates with UTM tagging for precise tracking.
+
+Measurement & Reporting:
+KPIs: Number of products sold, donation amount raised, branded hashtag mentions, engagement rates.
+Daily monitoring during the campaign week, final performance report by June 10, 2025.
+Analytics tools: Google Analytics, platform-specific insights, and hashtag trackers.
+
+Historical Insights:
+Seasonal campaigns with charitable elements saw a 20% uplift in sales.
+Infographics and videos have the highest shareability among past efforts.
+
+Roles & Responsibilities:
+Campaign Manager: Oversees coordination and ensures timely execution.
+Creative Team: Produces videos, infographics, and other assets.
+Social Media Specialist: Engages with users, monitors hashtags, and schedules posts.
+Email Marketing Specialist: Designs and deploys targeted email campaigns.
+Data Analyst: Tracks performance metrics and reports insights.

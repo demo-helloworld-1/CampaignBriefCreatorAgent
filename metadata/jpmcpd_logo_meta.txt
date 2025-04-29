@@ -1,0 +1,4 @@
+Brand: JPMC Private Bank
+Type Company: Logo
+Description: A chi
+ImagePath: .logos/JPM_PB.png

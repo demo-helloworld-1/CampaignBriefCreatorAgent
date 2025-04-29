@@ -1,0 +1,61 @@
+Marketing Campaign Brief 
+Campaign Name: "EcoSmart Lifestyle Challenge - Transform Your Daily Habits" 
+Campaign Type: Social Media, Email Campaign, & Community Engagement
+
+Business & Marketing Objectives:
+Launch EcoSmart’s new line of reusable and eco-friendly daily essentials (e.g., bamboo travel mugs, collapsible silicone food containers).
+Inspire users to adopt small, sustainable habits through a fun 30-day challenge.
+Increase product page visits by 30% and drive a 12% purchase conversion rate.
+Build a community around the EcoSmart brand by growing social media followers and engagement by 40%.
+
+Target Audience:
+Primary: Young professionals, aged 25-35, seeking practical eco-friendly solutions for daily life.
+Secondary: Parents and families interested in sustainability and wellness-focused challenges.
+
+Channels:
+Social Media: Instagram (Reels & Stories), Facebook Groups, TikTok.
+Email Campaign: Weekly tips, challenge updates, and exclusive discount codes.
+Community Platform: Launch a dedicated “EcoSmart Challenge Hub” on the website.
+
+Campaign Duration:
+Launch Date: May 15, 2025
+End Date: June 15, 2025
+
+Budget Allocation:
+Social Media: $6,000
+Email Marketing: $3,000
+Creative Production: $3,500
+
+Core Message & Positioning: "Make the Planet Proud – Join the EcoSmart Lifestyle Challenge and take a step toward an eco-conscious, clutter-free, and inspiring everyday routine."
+
+Creative Assets Required:
+Eye-catching teaser videos showcasing the product line and eco-friendly challenges.
+Daily challenge posts for Instagram Stories (e.g., “Switch to a reusable mug today!”).
+Weekly motivational emails with habit-tracking templates and discount codes.
+Interactive infographics and user-generated content (UGC) posts.
+
+Compliance, Legal & Brand Guidelines:
+Ensure all communications align with EcoSmart's sustainable ethos.
+Verify environmental claims for transparency and legal approval.
+Ensure GDPR compliance for user engagement data on the Challenge Hub.
+
+Technical & Operational Requirements:
+Use Instagram’s “poll” and “quiz” features for daily challenge interactions.
+Email automation via Salesforce Marketing Cloud to deliver weekly updates.
+Integration of a habit tracker on the EcoSmart website with UTM-tagged links.
+
+Measurement & Reporting:
+KPIs: Number of challenge participants, hashtag usage (#EcoSmartChallenge), product sales, and website visits.
+Weekly tracking of engagement metrics and participant feedback through social media tools.
+Final performance report by June 20, 2025.
+
+Historical Insights:
+Previous campaigns with interactive community elements led to higher long-term brand loyalty.
+TikTok challenges generated the highest engagement, with a 50% increase in brand mentions.
+
+Roles & Responsibilities:
+Campaign Manager: Oversee the challenge timeline and coordinate teams.
+Creative Team: Create videos, infographics, and challenge-related assets.
+Community Manager: Engage with participants on social media and the website.
+Email Marketing Specialist: Deliver weekly updates and exclusive offers.
+Data Analyst: Monitor campaign metrics and provide actionable insights.

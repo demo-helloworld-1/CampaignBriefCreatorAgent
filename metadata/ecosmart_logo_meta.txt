@@ -1,0 +1,4 @@
+Brand: EcoSmart
+Type: Company Logo
+Description: EcoSmart Thermos brand logo, sustainable products. Use for EcoSmart campaigns.
+ImagePath: ./logos/ecosmart.png

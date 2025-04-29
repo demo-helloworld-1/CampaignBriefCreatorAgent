@@ -1,0 +1,60 @@
+Marketing Campaign Brief 
+Campaign Name: "EcoSmart Clearance Countdown – Sustainable Savings for You" 
+Campaign Type: Social Media, Email Campaign, & E-commerce Flash Sale
+
+Business & Marketing Objectives:
+Clear inventory of older EcoSmart product lines to make room for new stock.
+Drive urgency and maximize sales through time-sensitive offers.
+Re-engage dormant customers and incentivize first-time buyers.
+
+Target Audience:
+Primary: Bargain-conscious shoppers, aged 25-45, interested in eco-friendly alternatives.
+Secondary: Existing EcoSmart customers who may want to expand their collection.
+
+Channels:
+Social Media: Instagram, Facebook, Pinterest.
+Email Marketing: Flash sale announcements and exclusive loyalty offers.
+Website: Clearance sale page with highlighted discounts and countdown timers.
+
+Campaign Duration:
+Launch Date: April 10, 2025
+End Date: April 20, 2025
+
+Budget Allocation:
+Social Media Ads: $4,000
+Email Marketing: $2,000
+Creative Production: $2,000
+
+Core Message & Positioning: "Sustainable Deals, Unbeatable Prices – Don’t miss the EcoSmart Clearance Countdown! Stock up on your favorite eco-friendly products before they’re gone for good."
+
+Creative Assets Required:
+Attention-grabbing countdown videos and graphics for social media ads.
+Carousel posts showcasing top discounted items with before-and-after pricing.
+Personalized email templates with “Top Picks for You” recommendations.
+Website banners and pop-ups with flash sale alerts.
+
+Compliance, Legal & Brand Guidelines:
+Ensure all discounts and promotions comply with legal advertising standards.
+Content to adhere to EcoSmart brand guidelines for tone and design.
+Transparency in pricing—clearly show original and discounted prices.
+
+Technical & Operational Requirements:
+Employ a countdown timer plugin on the e-commerce site.
+Automate email triggers for cart abandonment reminders.
+Set up UTM parameters to track traffic sources and conversion rates.
+
+Measurement & Reporting:
+KPIs: Total revenue, inventory cleared, conversion rates, email click-through rates.
+Daily tracking and adjustments to ad targeting during the campaign period.
+Final campaign performance report by April 25, 2025, using Google Analytics and email platform insights.
+
+Historical Insights:
+Limited-time offers and countdown elements significantly increase conversion rates.
+Past clearance sales achieved a 15% uplift in overall website traffic.
+
+Roles & Responsibilities:
+Campaign Manager: Oversee execution and ensure inventory levels are updated in real-time.
+Creative Team: Design social media and email visuals.
+Social Media Specialist: Run paid ads and engage with user comments.
+E-commerce Specialist: Optimize the website for seamless browsing and purchases.
+Data Analyst: Monitor sales trends and provide actionable insights.
