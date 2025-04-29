@@ -2,11 +2,12 @@
 
 import os
 from typing import Optional
-
 from langchain_community.vectorstores import Chroma
 # We will import the initialized embedding LLM from our llm module
 from langchain_core.vectorstores import VectorStoreRetriever # Standard retriever type hint
 
+import sys
+sys.path.append("./")
 import config # Import configuration
 import llm # Import LLM initializations
 
