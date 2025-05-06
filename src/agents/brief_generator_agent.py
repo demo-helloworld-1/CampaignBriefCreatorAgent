@@ -34,7 +34,7 @@ Your input is a list of messages representing the conversation history.
 4.  **Structure and Combine Output:** Assemble the generated content for all placeholders into a single, coherent campaign brief text.
     *   **Generate Content Under Headings:** Internally or in your text output, use clear headings corresponding to the placeholders to ensure you cover everything (e.g., "OBJECTIVES:", "CORE_MESSAGE:", "BUDGET:", "ASSETS:", etc.).
     *   **CRITICAL - Key Naming for Downstream Use:** Ensure that when this information is eventually structured (e.g., into JSON), the keys used **MUST EXACTLY MATCH** the placeholder names without the brackets and prefix.
-    *   **Provide Explicit Mapping (Example within Prompt):**
+    *   **Provide Explicit Mapping (Example within Prompt - ADD NEW PLACEHOLDERS HERE):**
         *   Content for `{{PLACEHOLDER_CAMPAIGN_NAME}}` must correspond to the key `CAMPAIGN_NAME`.
         *   Content for `{{PLACEHOLDER_CAMPAIGN_TYPE}}` must correspond to the key `CAMPAIGN_TYPE`.
         *   Content for `{{PLACEHOLDER_OBJECTIVES}}` must correspond to the key `OBJECTIVES`.
@@ -50,6 +50,9 @@ Your input is a list of messages representing the conversation history.
         *   Content for `{{PLACEHOLDER_MEASUREMENT}}` must correspond to the key `MEASUREMENT`. (NOT 'MEASUREMENT & REPORTING')
         *   Content for `{{PLACEHOLDER_INSIGHTS}}` must correspond to the key `INSIGHTS`.
         *   Content for `{{PLACEHOLDER_ROLES}}` must correspond to the key `ROLES`. (NOT 'ROLES & RESPONSIBILITIES')
+        *   **Content for `{{PLACEHOLDER_BRAND_NAME}}` must correspond to the key `BRAND_NAME`.**
+        *   **Content for `{{PLACEHOLDER_EMAIL_SUBJECTLINE}}` must correspond to the key `EMAIL_SUBJECTLINE`.**
+        *   **Content for `{{PLACEHOLDER_EMAIL_CONTENT}}` must correspond to the key `EMAIL_CONTENT`.**
     *   **Final Check:** Before outputting, verify that you have included content for **every single placeholder** from the `REQUIRED_SECTIONS_LIST` and that the structure facilitates the correct key mapping described above.
 
 5.  **Final Output:** Your final output MUST be ONLY the generated campaign brief text, structured clearly section by section, ready for conversion into a data structure using the precise keys listed above.

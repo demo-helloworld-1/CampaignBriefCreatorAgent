@@ -96,7 +96,7 @@ Available Agents (via message history):
 
 Your workflow MUST be executed in the following precise steps:
 
-Step 1: Extract Placeholders. **Call `extract_placeholders_from_template`** with `template_path` set to `""" + TEMPLATE_PATH + """`. Remember the `extracted_placeholders` list. Check if '{{PLACEHOLDER_COMPANY_LOGO}}' (or similar) is present.
+Step 1: Extract Placeholders. **Call `extract_placeholders_from_template`** with `template_path` set to `""" + TEMPLATE_PATH + """`. Remember the `extracted_placeholders` list, including fields like `{{PLACEHOLDER_BRAND_NAME}}`, `{{PLACEHOLDER_EMAIL_SUBJECTLINE}}`, and `{{PLACEHOLDER_EMAIL_CONTENT}}`. Check if '{{PLACEHOLDER_COMPANY_LOGO}}' (or similar) is present.
 
 Step 2: Retrieve Relevant Campaign Data.
     a. Formulate a `campaign_query` based on the user request's topic (e.g., "EcoSmart Thermos Fall/Winter promotion").
@@ -107,16 +107,16 @@ Step 3: **Retrieve Logo Metadata.**
     b. **Formulate Logo Query:** Create a specific `logo_query` like "[Brand Name] company logo\" (e.g., \"Nike company logo\").
     c. **Call `retrieve_relevant_campaign_data`** with the `logo_query`. Remember the `retrieved_logo_metadata` string output.
 
-Step 4: Summarize Campaign Data. **Delegate to `summarizer_agent`**. Provide the `extracted_placeholders` list and the `retrieved_campaign_context` (from Step 2b) from the message history for the agent to use.
+Step 4: Summarize Campaign Data. **Delegate to `summarizer_agent`**. Provide the `extracted_placeholders` list (including new ones) and the `retrieved_campaign_context` (from Step 2b) from the message history for the agent to use.
 
-Step 5: Generate New Campaign Brief. **Delegate to `brief_generator_agent`**. Provide the `extracted_placeholders` list, the user request, and the summary from Step 4 from the message history for the agent to use.
+Step 5: Generate New Campaign Brief. **Delegate to `brief_generator_agent`**. Uses the full list of placeholders (including new ones), the user request, and the summary from Step 4 from the message history to generate content for ALL required fields.
 
-Step 6: Extract Generated Brief Text. Get text from `brief_generator_agent`'s last message.
+Step 6: Extract Generated Brief Text. Get text from `brief_generator_agent`'s last message. This text must contain content for all extracted placeholders from Step 1, including brand name, email subject line, and email content, formatted according to the brief generator's instructions.
 
 Step 7: **Prepare Data for Word Template (Text & Image).** This step involves processing information from the message history.
     a. **Parse Logo Metadata:** Examine the `retrieved_logo_metadata` string (from Step 3c). Find the line starting with 'ImagePath:' and extract the file path (e.g., './logos/nike.png'). Let's call this `logo_file_path`. Handle cases where the path isn't found.
     b. **Construct Image Dictionary:** If `logo_file_path` was found and the placeholder `{{PLACEHOLDER_COMPANY_LOGO}}` exists (from Step 1), create a dictionary: `image_placeholders_dict = {'PLACEHOLDER_COMPANY_LOGO': logo_file_path}`. Otherwise, use an empty dictionary or None.
-    c. **Construct Text JSON:** Using the `extracted_placeholders` list from Step 1, systematically parse the Generated Brief text (Step 6). For EACH text placeholder content in that list (e.g., `PLACEHOLDER_CAMPAIGN_NAME`, `EMAIL_SUBJECTLINE` - content *inside* the braces), find its corresponding content in the generated text and add an entry to the `text_json_data` dictionary. The keys in this dictionary MUST be the content inside the braces (e.g., 'PLACEPAOLDER_CAMPAIGN_NAME', 'EMAIL_SUBJECTLINE'). Ensure EVERY placeholder from the extracted list (except image ones handled in 7b) has a corresponding key in the `text_json_data` dictionary, even if the content is empty.
+    c. **Construct Text JSON:** Using the `extracted_placeholders` list from Step 1 (which now includes brand name, email subject, email content), systematically parse the Generated Brief text (Step 6). For EACH text placeholder content in that list (e.g., `PLACEHOLDER_CAMPAIGN_NAME`, `EMAIL_SUBJECTLINE` - content *inside* the braces), find its corresponding content in the generated text and add an entry to the `text_json_data` dictionary. The keys in this dictionary MUST be the content inside the braces (e.g., 'PLACEHOLDER_CAMPAIGN_NAME', 'EMAIL_SUBJECTLINE', **'BRAND_NAME', 'EMAIL_CONTENT'**). Ensure EVERY placeholder from the extracted list (except image ones handled in 7b) has a corresponding key in the `text_json_data` dictionary, even if the content is empty.
     d. **Check for Missing Placeholders:** If any placeholders from the `extracted_placeholders` list are missing in the `text_json_data`, then fill the placeholder with a related content.
     e. **Validate** both `text_json_data` and `image_placeholders_dict`.
 
