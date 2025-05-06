@@ -6,3 +6,9 @@ __pycache__
 
 # Ignore Python .env file
 .env
+
+# Ignore Vector DB file
+vector_store_db/
+
+# Ignore Logs
+logs

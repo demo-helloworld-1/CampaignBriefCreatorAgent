@@ -1,0 +1,31 @@
+# requirements.txt
+
+# Web server framework
+Flask
+
+# Langchain and related packages
+langchain
+langchain-community
+langchain-openai
+langgraph
+
+# Environment variable loading
+python-dotenv
+
+# Data validation (used by Langchain tools)
+pydantic
+
+# Word document processing
+python-docx
+
+# Chroma vector database
+chromadb
+
+# Tokenizer for OpenAI models (often a silent dependency)
+tiktoken
+
+# IMPORTANT: If 'langgraph_supervisor' is a custom module you developed
+# and it's part of your project's source code (e.g., in src/utils/),
+# DO NOT list it here. Ensure it's correctly imported from within your src package.
+# If it's a separate, installable package *not* on PyPI, you'll need
+# different instructions for installation.

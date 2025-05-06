@@ -1,52 +1,79 @@
 # src/llm.py
 
+import os
+# Assuming the primary LLM class used in app copy.py was AzureChatOpenAI from langchain_openai
 from langchain_openai import AzureChatOpenAI, AzureOpenAIEmbeddings
-import config # Import our configuration module
+# Import config for environment variables
+from src.config import (
+    AZURE_OPENAI_CHAT_ENDPOINT,
+    OPENAI_API_KEY_CHAT,
+    AZURE_OPENAI_CHAT_DEPLOYMENT_NAME,
+    OPENAI_API_VERSION_CHAT,
+    AZURE_OPENAI_EMBEDDING_ENDPOINT,
+    OPENAI_API_KEY_EMBEDDING,
+    AZURE_OPENAI_EMBEDDING_DEPLOYMENT_NAME,
+    OPENAI_API_VERSION_EMBEDDING # Use the versions from config
+)
 
-# --- Initialize the Chat LLM for agents/supervisor ---
-chat_llm = None
-# Check if all required chat config variables are set
-if config.AZURE_OPENAI_CHAT_DEPLOYMENT_NAME and config.AZURE_OPENAI_CHAT_ENDPOINT and config.OPENAI_API_KEY_CHAT:
-    try:
-        chat_llm = AzureChatOpenAI(
-            model=config.AZURE_OPENAI_CHAT_DEPLOYMENT_NAME, # Use deployment name from config
-            api_version=config.OPENAI_API_VERSION_CHAT, # Use chat-specific version
-            azure_endpoint=config.AZURE_OPENAI_CHAT_ENDPOINT, # Use chat-specific endpoint
-            api_key=config.OPENAI_API_KEY_CHAT, # Use chat-specific key
-            # temperature=0 # Consider setting temperature for more deterministic output in agents
+print("Initializing Azure OpenAI LLM and Embeddings...")
+
+# --- Initialize Azure OpenAI Chat Model ---
+llm = None # Initialize to None
+try:
+    # Check config variables
+    if not all([AZURE_OPENAI_CHAT_ENDPOINT, OPENAI_API_KEY_CHAT, AZURE_OPENAI_CHAT_DEPLOYMENT_NAME]):
+         print("Warning: Chat model configuration is incomplete in config. Skipping chat model initialization.")
+    else:
+        # Initialize using config variables
+        llm = AzureChatOpenAI(
+            azure_endpoint=AZURE_OPENAI_CHAT_ENDPOINT,
+            api_key=OPENAI_API_KEY_CHAT,
+            model=AZURE_OPENAI_CHAT_DEPLOYMENT_NAME,
+            api_version=OPENAI_API_VERSION_CHAT, # Use API version from config
+            # deployment_name=AZURE_OPENAI_CHAT_DEPLOYMENT_NAME # Can add if needed
         )
-        print("AzureChatOpenAI LLM initialized successfully.")
-    except Exception as e:
-        print(f"*** ERROR initializing AzureChatOpenAI LLM: {e} ***")
-        import traceback
-        traceback.print_exc()
-        chat_llm = None # Ensure it's None on failure
-else:
-    print("Warning: Required AzureChatOpenAI configuration missing. Chat LLM not initialized.")
+        print(f"AzureChatOpenAI initialized successfully with deployment/model: {AZURE_OPENAI_CHAT_DEPLOYMENT_NAME}.")
+
+except Exception as e:
+    print(f"\n*** ERROR initializing AzureChatOpenAI: {e} ***")
+    import traceback
+    traceback.print_exc()
+    llm = None # Ensure it's None if initialization fails
 
 
-# --- Initialize the Embedding LLM for RAG ---
-embedding_llm = None
-# Check if all required embedding config variables are set
-if config.AZURE_OPENAI_EMBEDDING_DEPLOYMENT_NAME and config.AZURE_OPENAI_EMBEDDING_ENDPOINT and config.OPENAI_API_KEY_EMBEDDING:
-    try:
-        embedding_llm = AzureOpenAIEmbeddings(
-            model=config.AZURE_OPENAI_EMBEDDING_DEPLOYMENT_NAME, # Use deployment name from config
-            openai_api_version=config.OPENAI_API_VERSION_EMBEDDING, # Use embedding-specific version
-            azure_endpoint=config.AZURE_OPENAI_EMBEDDING_ENDPOINT, # Use embedding-specific endpoint
-            api_key=config.OPENAI_API_KEY_EMBEDDING, # Use embedding-specific key
-            chunk_size=1 # This chunk_size is for batching embeddings, not text splitting
+# --- Initialize Azure OpenAI Embeddings Model ---
+embeddings = None # Initialize to None
+try:
+    # Check config variables
+    if not all([AZURE_OPENAI_EMBEDDING_ENDPOINT, OPENAI_API_KEY_EMBEDDING, AZURE_OPENAI_EMBEDDING_DEPLOYMENT_NAME]):
+         print("Warning: Embedding model configuration is incomplete in config. Skipping embeddings initialization.")
+    else:
+        # Initialize using config variables
+        embeddings = AzureOpenAIEmbeddings(
+            azure_endpoint=AZURE_OPENAI_EMBEDDING_ENDPOINT,
+            api_key=OPENAI_API_KEY_EMBEDDING,
+            model=AZURE_OPENAI_EMBEDDING_DEPLOYMENT_NAME,
+            api_version=OPENAI_API_VERSION_EMBEDDING, # Use API version from config
+            chunk_size=1 # Keep chunk_size as in original/config
+            # deployment=AZURE_OPENAI_EMBEDDING_DEPLOYMENT_NAME # Can add if needed
         )
-        print("AzureOpenAIEmbeddings LLM initialized successfully.")
-    except Exception as e:
-        print(f"*** ERROR initializing AzureOpenAIEmbeddings LLM: {e} ***")
-        import traceback
-        traceback.print_exc()
-        embedding_llm = None # Ensure it's None on failure
-else:
-    print("Warning: Required AzureOpenAIEmbeddings configuration missing. Embedding LLM not initialized.")
+        print(f"AzureOpenAIEmbeddings initialized successfully with deployment/model: {AZURE_OPENAI_EMBEDDING_DEPLOYMENT_NAME}.")
+
+except Exception as e:
+     print(f"\n*** ERROR initializing AzureOpenAIEmbeddings: {e} ***")
+     import traceback
+     traceback.print_exc()
+     embeddings = None # Ensure it's None if initialization fails
 
 
-# Export the initialized LLM objects
-# If initialization failed, they will be None.
-__all__ = ['chat_llm', 'embedding_llm']
+# Optional: Final check and print status
+if llm is None:
+    print("\n*** WARNING: AzureChatOpenAI was NOT initialized. Agent functionality will be limited. ***")
+if embeddings is None:
+    print("\n*** WARNING: AzureOpenAIEmbeddings was NOT initialized. RAG functionality will be impacted. ***")
+# Add check if both failed - might be a critical issue
+if llm is None and embeddings is None:
+    print("\n*** CRITICAL WARNING: Neither LLM nor Embeddings initialized. Most functionality will fail. ***")
+
+
+print("src.llm initialization attempted.")

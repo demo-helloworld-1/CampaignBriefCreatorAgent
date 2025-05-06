@@ -1,58 +1,67 @@
 # src/rag.py
 
 import os
-from typing import Optional
 from langchain_community.vectorstores import Chroma
-# We will import the initialized embedding LLM from our llm module
-from langchain_core.vectorstores import VectorStoreRetriever # Standard retriever type hint
+# Use the initialized embeddings object from src/llm
+from src.llm import embeddings
+# Import configuration variables for path and search kwargs
+from src.config import PERSIST_DIRECTORY, RAG_SEARCH_KWARGS # Use PERSIST_DIRECTORY from config
 
-import sys
-sys.path.append("./")
-import config # Import configuration
-import llm # Import LLM initializations
-
-# --- Initialize the Retriever ---
-retriever: Optional[VectorStoreRetriever] = None # Use Optional for type hinting
 vector_store = None
+retriever = None
 
-print("--- Initializing Retriever Components ---")
+print("Setting up RAG components (Chroma vector store and Retriever)...")
 
-# First, check if the embedding LLM was successfully initialized
-if llm.embedding_llm is None:
-    print("Retriever initialization skipped: Embedding LLM not initialized.")
-elif not os.path.exists(config.PERSIST_DIRECTORY):
-    # IMPORTANT: This directory must be created by running build_vector_store.py first.
-    print(f"*** ERROR: Vector store directory not found at '{config.PERSIST_DIRECTORY}'. ***")
-    print("Please run the 'build_vector_store.py' script to create the vector store before starting the server.")
-    # Retriever remains None
+if embeddings is None:
+    print("*** ERROR: Embeddings not initialized in src/llm.py. Cannot set up RAG retriever. ***")
 else:
-    try:
-        print(f"Loading vector store from: {config.PERSIST_DIRECTORY}")
-        # Initialize the Chroma vector store using the path and the embedding function
-        # Note: LangChainDeprecationWarning might show up, the new way is langchain-chroma
-        # but this depends on your installed version. Using the community import for now.
-        vector_store = Chroma(
-            persist_directory=config.PERSIST_DIRECTORY,
-            embedding_function=llm.embedding_llm # Use the initialized embedding LLM
-        )
-        print("Vector store loaded.")
+    # Check if the vector store directory exists *before* attempting to load
+    if not os.path.exists(PERSIST_DIRECTORY):
+        # The build_vector_store.py script must create this directory and populate it.
+        print(f"\n*** WARNING: Vector store directory not found at '{PERSIST_DIRECTORY}'. Run build_vector_store.py first. RAG will not function. ***\n")
+    else:
+        try:
+            # Attempt to load the existing vector store
+            print(f"Attempting to load Chroma vector store from: {PERSIST_DIRECTORY}")
+            vector_store = Chroma(
+                persist_directory=PERSIST_DIRECTORY,
+                embedding_function=embeddings # Use the initialized embeddings object
+            )
+            print("Chroma vector store loaded.")
 
-        # Create a retriever instance from the vector store
-        # You can configure search type and k here (e.g., k=5 for top 5 results)
-        retriever = vector_store.as_retriever(
-            search_type="similarity", # or "mmr"
-            search_kwargs={"k": 5}    # Number of documents to retrieve
-        )
-        print(f"Retriever initialized with k={retriever.search_kwargs.get('k', 'N/A')}.")
+            # Create the retriever instance
+            # Use search kwargs from config
+            retriever = vector_store.as_retriever(
+                search_type="similarity", # Common search type
+                search_kwargs=RAG_SEARCH_KWARGS
+            )
+            print(f"Retriever initialized with search kwargs: {RAG_SEARCH_KWARGS}")
 
-    except Exception as e:
-        print(f"*** ERROR initializing Chroma or Retriever: {e} ***")
-        import traceback
-        traceback.print_exc()
-        retriever = None # Ensure retriever is None on failure
-        vector_store = None
+            # Optional: Basic check if the store has content (requires chromadb installed)
+            try:
+                # Accessing internal _client might change, but is needed to check collections
+                # Check if vector_store is not None before accessing _client
+                if vector_store and hasattr(vector_store, '_client'):
+                    collection_names = [c.name for c in vector_store._client.list_collections()]
+                    if not collection_names:
+                          print(f"*** WARNING: Vector store directory '{PERSIST_DIRECTORY}' found, but appears empty (no collections). Run build_vector_store.py. ***")
+                    else:
+                        print(f"Vector store appears to contain collections: {collection_names}.")
+                else:
+                    print("Note: Vector store client not available for detailed check.")
+
+            except Exception as e:
+                print(f"Note: Could not perform detailed check on vector store collections: {e}")
 
 
-# Export the retriever instance for other modules to use
-# It will be None if initialization failed.
-__all__ = ['retriever']
+        except Exception as e:
+            print(f"\n*** ERROR initializing Chroma vector store or retriever: {e} ***")
+            import traceback
+            traceback.print_exc()
+            vector_store = None
+            retriever = None
+
+if retriever is None:
+    print("\n*** WARNING: RAG Retriever failed to initialize. The 'retrieve_relevant_campaign_data' tool will not function. ***")
+else:
+    print("RAG components initialized.")

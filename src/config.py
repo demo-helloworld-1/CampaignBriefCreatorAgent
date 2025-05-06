@@ -13,9 +13,9 @@ load_dotenv()
 OPENAI_API_TYPE = os.getenv("OPENAI_API_TYPE", "azure")
 # API version is usually tied to the service endpoint version,
 # but we'll allow separate vars if needed, defaulting to a common one
-OPENAI_API_VERSION = os.getenv("OPENAI_API_VERSION", "2024-02-01")
-OPENAI_API_VERSION_CHAT = os.getenv("OPENAI_API_VERSION_CHAT", OPENAI_API_VERSION) # Override if different
-OPENAI_API_VERSION_EMBEDDING = os.getenv("OPENAI_API_VERSION_EMBEDDING", OPENAI_API_VERSION) # Override if different
+OPENAI_API_VERSION = os.getenv("OPENAI_API_VERSION", "2025-01-01-preview")
+OPENAI_API_VERSION_CHAT = os.getenv("OPENAI_API_VERSION_CHAT", "2025-01-01-preview") # Override if different
+OPENAI_API_VERSION_EMBEDDING = os.getenv("OPENAI_API_VERSION_EMBEDDING", "2023-05-15") # Override if different
 
 
 # Chat Model Configuration
@@ -33,9 +33,9 @@ AZURE_OPENAI_EMBEDDING_DEPLOYMENT_NAME = os.getenv("AZURE_OPENAI_EMBEDDING_DEPLO
 # Define paths relative to the project root
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 
-DATA_DIR = os.path.join(PROJECT_ROOT, "Data")
+DATA_DIR = os.path.join(PROJECT_ROOT, "data")
 METADATA_DIR = os.path.join(PROJECT_ROOT, "metadata")
-LOGOS_DIR = os.path.join(PROJECT_ROOT, ".logos") # Use the hidden dir name
+LOGOS_DIR = os.path.join(PROJECT_ROOT, "logos") # Use the hidden dir name
 OUTPUT_DIR = os.path.join(PROJECT_ROOT, "output")
 PERSIST_DIRECTORY = os.path.join(PROJECT_ROOT, "vector_store_db") # For Chroma DB
 
@@ -45,10 +45,17 @@ OUTPUT_FILENAME = "Final_Campaign_Brief.docx"
 TEMPLATE_PATH = os.path.join(DATA_DIR, TEMPLATE_FILENAME)
 OUTPUT_PATH = os.path.join(OUTPUT_DIR, OUTPUT_FILENAME)
 
+# --- Workflow Log Configuration ---
+# Directory to save workflow history logs
+WORKFLOW_LOG_DIR = os.path.join(PROJECT_ROOT, "logs", "workflow_history") # New directory 'logs/workflow_history'
+# Base filename for workflow logs (unique ID/timestamp will be added)
+WORKFLOW_LOG_BASE_FILENAME = "workflow_history"
 
 # --- Ensure directories exist ---
 # Create output directory if it doesn't exist
 os.makedirs(OUTPUT_DIR, exist_ok=True)
+# Create workflow log directory if it doesn't exist
+os.makedirs(WORKFLOW_LOG_DIR, exist_ok=True) # <--- ADD THIS LINE
 # Note: PERSIST_DIRECTORY is typically created by the build_vector_store.py script.
 # os.makedirs(PERSIST_DIRECTORY, exist_ok=True) # Don't create here, let build script handle
 
@@ -80,6 +87,9 @@ if missing_vars:
     # raise ValueError(f"Missing required environment variables: {', '.join(missing_vars)}")
 
 
+PERSIST_DIRECTORY = os.path.join(PROJECT_ROOT, "vector_store_db") # For Chroma DB
+RAG_SEARCH_KWARGS = {"k": 5} 
+
 print("Configuration loaded.")
 # print specific endpoint details for clarity
 print(f"Chat Endpoint: {AZURE_OPENAI_CHAT_ENDPOINT} (Deployment: {AZURE_OPENAI_CHAT_DEPLOYMENT_NAME})")
@@ -87,3 +97,4 @@ print(f"Embedding Endpoint: {AZURE_OPENAI_EMBEDDING_ENDPOINT} (Deployment: {AZUR
 print(f"Template Path: {TEMPLATE_PATH}")
 print(f"Output Path: {OUTPUT_PATH}")
 print(f"Vector Store Path: {PERSIST_DIRECTORY}")
+print(f"Workflow Logs Directory: {WORKFLOW_LOG_DIR}")
